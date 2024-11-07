@@ -1,0 +1,22 @@
+#app {
+    display: flex;
+
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+.col-4 {
+    width: 32%;
+    padding: 15px;
+    background-color: #f4f4f4;
+}
+.col-8 {
+    width: 66%;
+    padding: 15px;
+}
+
+#estiloFoto {
+    width: 60%;
+    height: 60%;
+
+    border-radius: 50%;
+}

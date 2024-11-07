@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <title>Introducción a Vue</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="col-4">
+            <div>
+                <img id=estiloFoto v-bind:src="rutaImagen" alt="FotodePerfil">
+            </div>
+            <div>
+                <div v-html="tituloDatos"></div>
+                <p>Correo: {{correo}}</p>
+                <p>Teléfono: {{ telefono }}</p>
+                <p>Dirección: {{ direccion }}</p>
+                <p>Ciudad: {{ ciudad }}</p>
+                <p>LinkedIn: <a v-bind:href="linkedin" >{{ linkedin }}</a></p>
+            </div>
+            <div>
+                
+                <div v-html="tituloQuienSoy"></div> 
+                <p>{{ quienSoy }}</p>
+            </div>
+            <div>
+                <div v-html="tituloProgramas"></div>
+                
+
+            </div>
+            <div>
+                <h3>Idiomas</h3>
+                <p>{{ idiomas }}</p>
+
+            </div>
+        </div>
+
+        <div class="col-8">
+            <h1>{{ nombre }} {{ apellido }}</h1>
+            <h2>Puesto buscado: {{ puestoBuscado }}</h2>
+            
+            <div v-html="tituloExperiencia"></div>
+   
+
+                    <div v-for="experiencia in experienciaProfesional">
+                        <h4>{{ experiencia.empresa }} ({{ experiencia.fecha }})</h4>
+                        <p><b>Cargo:</b> {{ experiencia.cargo }}</p>
+                        <p>{{ experiencia.detalles }}</p>
+                    </div>
+
+                <div v-html="tituloEducacion"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                tituloDatos:'<h3>Datos Personales "con return"</h3>',
+
+                    nombre: 'David',
+                    apellido: 'Villacura',
+                    direccion: 'Monseñor Eyzaguirre 103 Ñuñoa',
+                    telefono: '+56997181536',
+                    correo: 'davvillacura@gmail.com',
+                    ciudad: 'Santiago de Chile',
+                    linkedin: 'http://www.linkedin.com/in/david-villacura-9b1a7048',
+                    rutaImagen: 'img/perfil.jpg',
+
+                    tituloQuienSoy: '<h3>¿Quién soy?</h3>',
+                    quienSoy: 'Profesional orientado a la enseñanza de idiomas y con experiencia en finanzas. Busco aplicar mis conocimientos en desarrollo web y enseñanza.',
+                    tituloProgramas: '<h3>Programas</h3>',
+                    
+                    puestoBuscado: 'Front-End Developer Trainee',
+
+                    idiomas: 'Español (Nativo), Inglés (Avanzado - Certificado C1)',
+
+                    tituloExperiencia: '<h2>Experiencia Profesional</h2>',
+                    experienciaProfesional: [
+                        { empresa: 'Flip-Class', fecha: 'Marzo 2022 - Diciembre 2023', cargo: 'Profesor de Inglés', detalles: 'Cursos de inglés nivel básico y medio (A1-C1) en modalidad online.' },
+                        { empresa: 'Universidad Diego Portales', fecha: 'Marzo 2022 - Julio 2022', cargo: 'Ayudante de Finanzas', detalles: 'Ayudantía en Fundamentos de Finanzas para Contador Auditor Vespertino.' },
+                        { empresa: 'Gead Language Community', fecha: 'Mayo 2019 - Junio 2021', cargo: 'Profesor de Inglés', detalles: 'Cursos de inglés nivel básico y medio (A1-A2, B1-B2) en modalidad online y presencial.' }
+                    ],
+                    tituloEducacion: '<h2>Educación</h2>',
+
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
+
+</html>
