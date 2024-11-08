@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/estilos.css">
-    <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./assets/img/perfil.jpg">
     <title>Introducción a Vue</title>
 </head>
 
+
 <body>
     <div id="app">
-        <div class="col-4">
+        <div id="colIzquierda" class="col-4">
             <div>
                 <img id=estiloFoto v-bind:src="rutaImagen" alt="FotodePerfil">
             </div>
@@ -39,7 +40,7 @@
             </div>
         </div>
 
-        <div class="col-8">
+        <div class="colDerecha">
             <h1>{{ nombre }} {{ apellido }}</h1>
             <h2>Puesto buscado: {{ puestoBuscado }}</h2>
             
@@ -53,6 +54,10 @@
                     </div>
 
                 <div v-html="tituloEducacion"></div>
+                <div v-for="educ in educacion">
+                    <h4>{{ educ.institucion }} ({{ educ.fecha }})</h4>
+                    <p>{{ educ.detalles }}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -64,7 +69,7 @@
         createApp({
             data() {
                 return {
-                tituloDatos:'<h3>Datos Personales "con return"</h3>',
+                tituloDatos:'<h3>Datos Personales</h3>',
 
                     nombre: 'David',
                     apellido: 'Villacura',
@@ -90,7 +95,13 @@
                         { empresa: 'Gead Language Community', fecha: 'Mayo 2019 - Junio 2021', cargo: 'Profesor de Inglés', detalles: 'Cursos de inglés nivel básico y medio (A1-A2, B1-B2) en modalidad online y presencial.' }
                     ],
                     tituloEducacion: '<h2>Educación</h2>',
-
+                    educacion: [
+                    { institucion: 'Edutecno y Talento Digital para Chile', fecha: 'Julio 2024 - Enero 2025', detalles: 'Front-End Trainee.' },
+                        { institucion: 'Universidad San Sebastián, Santiago', fecha: '2023', detalles: 'Ingeniería en Administración de Empresas Mención Control de Gestión.' },
+                        { institucion: 'Universidad Chileno-Británico de Cultura, Santiago', fecha: '2012', detalles: 'Título Profesional de Pedagogía en Inglés.' },
+                        { institucion: 'Universidad de Cambridge', fecha: 'Ene - Jun 2013', detalles: 'Pasantía en Facultad de Lenguas Modernas y Medievales.' },
+                       
+                    ],
                 };
             }
         }).mount('#app');
